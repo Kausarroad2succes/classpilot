@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Classpilot"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,6 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ClassMenuActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".AttendanceActivity"
+            android:exported="false"
+            android:parentActivityName=".ClassMenuActivity" />
+
     </application>
 
 </manifest>

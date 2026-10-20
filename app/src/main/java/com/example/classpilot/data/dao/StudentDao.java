@@ -15,7 +15,11 @@ public interface StudentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Student s);
 
-    @Query("SELECT * FROM students WHERE classId = :classId ORDER BY roll")
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<Student> students);
+
+    // CAST makes 2 come before 10 (plain text sorting would not)
+    @Query("SELECT * FROM students WHERE classId = :classId ORDER BY CAST(roll AS INTEGER), roll")
     LiveData<List<Student>> getByClass(String classId);
 
     @Query("DELETE FROM students WHERE id = :id")

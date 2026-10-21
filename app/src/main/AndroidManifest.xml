@@ -33,6 +33,16 @@
             android:exported="false"
             android:parentActivityName=".ClassMenuActivity" />
 
+        <activity
+            android:name=".ReportActivity"
+            android:exported="false"
+            android:parentActivityName=".ClassMenuActivity" />
+
+        <activity
+            android:name=".LessonActivity"
+            android:exported="false"
+            android:parentActivityName=".ClassMenuActivity" />
+
     </application>
 
 </manifest>

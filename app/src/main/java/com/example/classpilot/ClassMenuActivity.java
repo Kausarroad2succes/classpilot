@@ -43,7 +43,7 @@ public class ClassMenuActivity extends AppCompatActivity {
         }
         binding.tvInfo.setText("Choose what to do");
 
-        // EXPLICIT INTENT: pass the same class id + name to the attendance screen
+        // EXPLICIT INTENTS: pass the class id + name to the next screen
         binding.cardAttendance.setOnClickListener(v -> {
             Intent intent = new Intent(ClassMenuActivity.this, AttendanceActivity.class);
             intent.putExtra(AttendanceActivity.EXTRA_CLASS_ID, classId);
@@ -51,14 +51,21 @@ public class ClassMenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // These three screens are built in the next steps
-        binding.cardOverall.setOnClickListener(v -> comingNext("Overall attendance"));
-        binding.cardLowest.setOnClickListener(v -> comingNext("Lowest attendance"));
-        binding.cardSyllabus.setOnClickListener(v -> comingNext("Syllabus covered"));
+        binding.cardOverall.setOnClickListener(v -> openReport(ReportActivity.MODE_OVERALL));
+        binding.cardLowest.setOnClickListener(v -> openReport(ReportActivity.MODE_LOWEST));
+
+        // Built after the Today's lesson screen (it needs saved lessons to show)
+        binding.cardSyllabus.setOnClickListener(v -> Toast.makeText(this,
+                "Syllabus covered comes right after the Today's lesson screen",
+                Toast.LENGTH_SHORT).show());
     }
 
-    private void comingNext(String name) {
-        Toast.makeText(this, name + " is coming in the next step", Toast.LENGTH_SHORT).show();
+    private void openReport(String mode) {
+        Intent intent = new Intent(ClassMenuActivity.this, ReportActivity.class);
+        intent.putExtra(ReportActivity.EXTRA_CLASS_ID, classId);
+        intent.putExtra(ReportActivity.EXTRA_CLASS_NAME, className);
+        intent.putExtra(ReportActivity.EXTRA_MODE, mode);
+        startActivity(intent);
     }
 
     @Override

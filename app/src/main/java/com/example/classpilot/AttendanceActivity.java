@@ -229,8 +229,17 @@ public class AttendanceActivity extends AppCompatActivity {
                 .setPositiveButton("Save", (dialog, which) -> {
                     viewModel.save(currentStudents);
                     Toast.makeText(this, "Attendance saved", Toast.LENGTH_SHORT).show();
-                    // Next step: open the "Today's lesson" screen here instead of closing
-                    finish();
+
+                    // EXPLICIT INTENT: open Today's lesson and pass the numbers as extras
+                    Intent intent = new Intent(AttendanceActivity.this, LessonActivity.class);
+                    intent.putExtra(LessonActivity.EXTRA_CLASS_ID,
+                            getIntent().getStringExtra(EXTRA_CLASS_ID));
+                    intent.putExtra(LessonActivity.EXTRA_CLASS_NAME, className);
+                    intent.putExtra(LessonActivity.EXTRA_SESSION_DATE, viewModel.getSessionDate());
+                    intent.putExtra(LessonActivity.EXTRA_PRESENT, present);
+                    intent.putExtra(LessonActivity.EXTRA_TOTAL, total);
+                    startActivity(intent);
+                    finish();   // Back from the lesson screen goes to the class menu
                 })
                 .setNegativeButton("Review", null)
                 .show();

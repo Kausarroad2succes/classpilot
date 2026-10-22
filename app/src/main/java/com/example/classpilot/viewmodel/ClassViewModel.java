@@ -25,7 +25,7 @@ public class ClassViewModel extends AndroidViewModel {
         return classes;
     }
 
-    public void addClass(String name, String courseCode, int totalTopics) {
-        repository.addClass(name, courseCode, totalTopics);
+    public void addClass(String name, String courseCode, int studentCount) {
+        repository.addClass(name, courseCode, studentCount);
     }
 }

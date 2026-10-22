@@ -20,9 +20,9 @@
         android:inputType="textCapCharacters" />
 
     <EditText
-        android:id="@+id/etTopics"
+        android:id="@+id/etStudents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Total syllabus topics (e.g. 30)"
+        android:hint="Number of students (e.g. 122)"
         android:inputType="number" />
 </LinearLayout>

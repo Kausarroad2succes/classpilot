@@ -43,6 +43,11 @@
             android:exported="false"
             android:parentActivityName=".ClassMenuActivity" />
 
+        <activity
+            android:name=".SyllabusActivity"
+            android:exported="false"
+            android:parentActivityName=".ClassMenuActivity" />
+
     </application>
 
 </manifest>

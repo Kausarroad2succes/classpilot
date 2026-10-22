@@ -42,9 +42,10 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
     public void onBindViewHolder(@NonNull ClassViewHolder holder, int position) {
         ClassEntity c = items.get(position);
         holder.binding.tvName.setText(c.name);
+        // Only the course code now (the old "N topics" text is gone)
         String code = (c.courseCode == null || c.courseCode.isEmpty())
                 ? "No course code" : c.courseCode;
-        holder.binding.tvDetails.setText(code + "  |  " + c.totalTopics + " topics");
+        holder.binding.tvDetails.setText(code);
         holder.itemView.setOnClickListener(v -> listener.onClassClick(c));
     }
 

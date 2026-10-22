@@ -54,10 +54,13 @@ public class ClassMenuActivity extends AppCompatActivity {
         binding.cardOverall.setOnClickListener(v -> openReport(ReportActivity.MODE_OVERALL));
         binding.cardLowest.setOnClickListener(v -> openReport(ReportActivity.MODE_LOWEST));
 
-        // Built after the Today's lesson screen (it needs saved lessons to show)
-        binding.cardSyllabus.setOnClickListener(v -> Toast.makeText(this,
-                "Syllabus covered comes right after the Today's lesson screen",
-                Toast.LENGTH_SHORT).show());
+        // Card 4: topics taught so far (new in Step 2F)
+        binding.cardSyllabus.setOnClickListener(v -> {
+            Intent intent = new Intent(ClassMenuActivity.this, SyllabusActivity.class);
+            intent.putExtra(SyllabusActivity.EXTRA_CLASS_ID, classId);
+            intent.putExtra(SyllabusActivity.EXTRA_CLASS_NAME, className);
+            startActivity(intent);
+        });
     }
 
     private void openReport(String mode) {

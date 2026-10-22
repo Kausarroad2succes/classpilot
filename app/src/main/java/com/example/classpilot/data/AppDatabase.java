@@ -9,15 +9,18 @@ import androidx.room.RoomDatabase;
 import com.example.classpilot.data.dao.AttendanceDao;
 import com.example.classpilot.data.dao.ClassDao;
 import com.example.classpilot.data.dao.LessonDao;
+import com.example.classpilot.data.dao.ScheduleDao;
 import com.example.classpilot.data.dao.StudentDao;
 import com.example.classpilot.data.entity.AttendanceRecord;
 import com.example.classpilot.data.entity.ClassEntity;
 import com.example.classpilot.data.entity.LessonLog;
+import com.example.classpilot.data.entity.ScheduleSlot;
 import com.example.classpilot.data.entity.Student;
 
 @Database(
-        entities = {ClassEntity.class, Student.class, AttendanceRecord.class, LessonLog.class},
-        version = 2,
+        entities = {ClassEntity.class, Student.class, AttendanceRecord.class,
+                LessonLog.class, ScheduleSlot.class},
+        version = 3,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -26,6 +29,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract StudentDao studentDao();
     public abstract AttendanceDao attendanceDao();
     public abstract LessonDao lessonDao();
+    public abstract ScheduleDao scheduleDao();
 
     private static volatile AppDatabase INSTANCE;
 

@@ -3,8 +3,11 @@ package com.example.classpilot;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,6 +52,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.fabAdd.setOnClickListener(v -> showAddClassDialog());
+    }
+
+    // Toolbar menu with one item: "Routine" (new in Step 4A)
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_routine) {
+            // EXPLICIT INTENT: open the class routine screen
+            startActivity(new Intent(MainActivity.this, RoutineActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void showAddClassDialog() {
